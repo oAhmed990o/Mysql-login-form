@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  <link rel = "stylesheet" href="register.css">
+</head>
+<body>
+<div class="header-background">
+</div>
+<div class = "center">
+  <h1>Register</h1>
+  <form action="register.php" method = "post" id="form_reg">
+    <div class="txt_field">
+      <input type="text" name="reg_email">
+      <span></span>
+      <label>Email</label>
+    </div>
+    <div class="txt_field">
+      <input type="text" name="reg_name">
+      <span></span>
+      <label>Username</label>
+    </div>
+    <div class="txt_field">
+      <input type="password" name="reg_password">
+      <span></span>
+      <label>Password</label>
+    </div>
+    <div class="txt_field">
+      <input type="password" name="reg_confirm_password">
+      <span></span>
+      <label>Confirm password</label>
+    </div>
+    <input type="submit" value="Register">
+    <script src="register_validations.js"></script>
+    <div class="signup_link">
+      Already a member? <a href="register.html" onclick="window.location.href='login.html';return false">Login</a>
+    </div>
+  </form>
+</div>
+<script>
+  // Some random colors
+  const colors = ["rgba(0,217,255,0.51)", "rgba(255,255,255,0.6)", "rgba(0,119,255,0.89)"];
+
+  const numBalls = 20;
+  const balls = [];
+
+  for (let i = 0; i < numBalls; i++) {
+    let ball = document.createElement("div");
+    ball.classList.add("ball");
+    ball.style.background = colors[Math.floor(Math.random() * colors.length)];
+    ball.style.left = `${Math.floor(Math.random() * 100)}vw`;
+    ball.style.top = `${Math.floor(Math.random() * 100)}vh`;
+    ball.style.transform = `scale(${Math.random()})`;
+    ball.style.width = `${Math.random()*7}em`;
+    ball.style.height = ball.style.width;
+
+    balls.push(ball);
+    document.body.append(ball);
+  }
+
+  // Keyframes
+  balls.forEach((el, i, ra) => {
+    let to = {
+      x: Math.random() * (i % 2 === 0 ? 19 : -19),
+      y: Math.random() * -20
+    };
+
+    let anim = el.animate(
+            [
+              { transform: "translate(0, 0)" },
+              { transform: `translate(${to.x}rem, ${to.y}rem)` }
+            ],
+            {
+              duration: (Math.random() + 1) * 3000, // random duration
+              direction: "alternate",
+              fill: "both",
+              iterations: Infinity,
+              easing: "ease-in-out"
+            }
+    );
+  });
+</script>
+
+</body>
+</html>
